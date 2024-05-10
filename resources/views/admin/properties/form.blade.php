@@ -79,12 +79,20 @@
                     'value' => $property->zipcode,
                 ])
         </div>
+        @include('shared.select', [
+                    'label' => 'Options',
+                    'name' => 'options',
+                    'multiple' => true,
+                    'value' => $property->options()->pluck('id'),
+                    'options' => $options
+                    ])
         @include('shared.checkbox', [
-                    'label' => 'Vendu',
-                    'name' => 'sold',
-                    'value' => $property->sold,
+            'label' => 'Vendu',
+            'name' => 'sold',
+            'value' => $property->sold,
+            
                 ])
-
+ 
         <div>
             <button class="btn btn-primary">
                 @if ($property->exists)
