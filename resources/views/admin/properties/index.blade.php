@@ -27,11 +27,8 @@
                     <td>
                         <div class="d-flex gap-2 w-100 justify-content-end">
                             <a href="{{ route('admin.property.edit', $property) }}" class="btn btn-primary">Modifier</a>
-                            <form id="deleteForm_{{ $property->id }}" action="{{ route('admin.property.destroy', $property) }}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button class="btn btn-danger" onclick="confirmDelete({{ $property->id }})">Supprimer</button>
-                            </form>
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#confirmModal_{{ $property->id }}"
+                                onclick="showConfirmModal({{ $property->id }})">Supprimer</button>
                         </div>
                     </td>
                 </tr>
@@ -40,15 +37,6 @@
     </table>
 
     {{ $properties->links() }}
-
-    <script>
-        function confirmDelete(propertyId) {
-            if (confirm("Êtes-vous sûr de vouloir supprimer cet élément?")) {
-                document.getElementById('deleteForm_' + propertyId).submit();
-            } else {
-                // Impedisce all'evento di propagarsi, quindi il modulo non verrà inviato al server
-                event.preventDefault();
-        }
-    }
-    </script>
+@include('shared.modal')
+    
 @endsection
