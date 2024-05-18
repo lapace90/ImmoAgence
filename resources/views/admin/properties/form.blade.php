@@ -30,8 +30,8 @@
                     'value' => $property->price,
                 ])
             </div>
-
         </div>
+
         <div class="row">
             @include('shared.input', [
                 'type' => 'textarea',
@@ -41,57 +41,58 @@
         </div>
         <div class="row">
             @include('shared.input', [
-                    'class' => 'col',
-                    'label' => 'Pièces',
-                    'name' => 'rooms',
-                    'value' => $property->rooms,
-                ])
-                @include('shared.input', [
-                    'class' => 'col',
-                    'label' => 'Chambres',
-                    'name' => 'bedrooms',
-                    'value' => $property->bedrooms,
-                ])
-                @include('shared.input', [
-                    'class' => 'col',
-                    'label' => 'Étage',
-                    'name' => 'floor',
-                    'value' => $property->floor,
-                ])
+                'class' => 'col',
+                'label' => 'Pièces',
+                'name' => 'rooms',
+                'value' => $property->rooms,
+            ])
+            @include('shared.input', [
+                'class' => 'col',
+                'label' => 'Chambres',
+                'name' => 'bedrooms',
+                'value' => $property->bedrooms,
+            ])
+            @include('shared.input', [
+                'class' => 'col',
+                'label' => 'Étage',
+                'name' => 'floor',
+                'value' => $property->floor,
+            ])
         </div>
         <div class="row">
             @include('shared.input', [
-                    'class' => 'col',
-                    'label' => 'Adress',
-                    'name' => 'address',
-                    'value' => $property->address,
-                ])
-                @include('shared.input', [
-                    'class' => 'col',
-                    'label' => 'Ville',
-                    'name' => 'city',
-                    'value' => $property->city,
-                ])
-                @include('shared.input', [
-                    'class' => 'col',
-                    'label' => 'Code Postal',
-                    'name' => 'zipcode',
-                    'value' => $property->zipcode,
-                ])
+                'class' => 'col',
+                'label' => 'Adresse',
+                'name' => 'address',
+                'value' => $property->address,
+            ])
+            @include('shared.input', [
+                'class' => 'col',
+                'label' => 'Ville',
+                'name' => 'city',
+                'value' => $property->city,
+            ])
+            @include('shared.input', [
+                'class' => 'col',
+                'label' => 'Code Postal',
+                'name' => 'zipcode',
+                'value' => $property->zipcode,
+            ])
         </div>
+        
         @include('shared.select', [
-                    'label' => 'Options',
-                    'name' => 'options',
-                    'multiple' => true,
-                    'value' => $property->options()->pluck('id'),
-                    'options' => $options
-                    ])
+            'label' => 'Options',
+            'name' => 'options',
+            'multiple' => true,
+            'value' => $property->options()->pluck('id'),
+            'options' => $options,
+        ])
+        
         @include('shared.checkbox', [
             'label' => 'Vendu',
             'name' => 'sold',
             'value' => $property->sold,
-            
-                ])
+        ])
  
         <div>
             <button class="btn btn-primary">
@@ -102,7 +103,5 @@
                 @endif
             </button>
         </div>
-
     </form>
-
 @endsection

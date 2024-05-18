@@ -22,8 +22,8 @@
                     <td>
                         <div class="d-flex gap-2 w-100 justify-content-end">
                             <a href="{{ route('admin.option.edit', $option) }}" class="btn btn-primary">Modifier</a>
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#confirmModal_{{ $option->id }}"
-                                onclick="showConfirmModal({{ $option->id }})">Supprimer</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-target="#confirmModal_{{ $option->id }}"
+                                onclick="showConfirmModalOption({{ $option->id }})">Supprimer</button>
                         </div>
                     </td>
                 </tr>
