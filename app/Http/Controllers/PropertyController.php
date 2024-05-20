@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PropertyContactRequest;
 use App\Http\Requests\SearchPropertiesRequest;
+use App\Mail\PropertyContactMail;
 use App\Models\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 use function Ramsey\Uuid\v1;
 
@@ -44,5 +47,11 @@ class PropertyController extends Controller
             'property' => $property,
             'slug' => $slug
         ]);
+    }
+
+    public function contact(Property $property, PropertyContactRequest $request)
+    {
+        Mail::send(new PropertyContactMail($property, $request->validated()));
+        return back()->with('success', 'Votre demande de contact a bien été envoyée');
     }
 }

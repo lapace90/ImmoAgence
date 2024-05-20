@@ -11,18 +11,20 @@
         <div class="mt-4">
             <h4>Intéressé par ce bien ?</h4>
 
-            <form action="" method="post" class="vstack gap-3">
+            <form action="{{ route('property.contact', $property) }}" method="post" class="vstack gap-3">
                 @csrf
                 <div class="row">
                     @include('shared.input', [
                         'class' => 'col',
                         'label' => 'Prénom',
                         'name' => 'firstname',
+                        'value' => 'John',
                     ])
                     @include('shared.input', [
                         'class' => 'col',
                         'label' => 'Nom',
                         'name' => 'lastname',
+                        'value' => 'Test',
                     ])
                 </div>
                 <div class="row">
@@ -30,12 +32,14 @@
                         'class' => 'col',
                         'label' => 'Téléphone',
                         'name' => 'phone',
+                        'value' => '0642424242',
                     ])
                     @include('shared.input', [
                         'type' => 'email',
                         'class' => 'col',
                         'label' => 'Email',
                         'name' => 'email',
+                        'value' => 'John@public.fr',
                     ])
                 </div>
                 @include('shared.input', [
@@ -43,6 +47,7 @@
                     'class' => 'col',
                     'label' => 'Votre message',
                     'name' => 'message',
+                    'value' => 'Hello world !',
                 ])
                 <div>
                     <button class="btn btn-primary">Nous contacter</button>
@@ -70,11 +75,11 @@
                         </tr>
                         <tr>
                             <td>Étage</td>
-                            <td>{{ $property->floor ? :'Rez de chaussé'}}</td>
+                            <td>{{ $property->floor ?: 'Rez de chaussé' }}</td>
                         </tr>
                         <tr>
                             <td>Localisation</td>
-                            <td>{{ $property->address}}<br>{{ $property->city}} {{ $property->zipcode}}</td> 
+                            <td>{{ $property->address }}<br>{{ $property->city }} {{ $property->zipcode }}</td>
                             {{-- provare a caricare una mappa con js --}}
                         </tr>
                     </table>
