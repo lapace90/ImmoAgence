@@ -22,8 +22,8 @@ class PropertyContactRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'firstname'=> ['required', 'string', 'min:2'],
-            'lastaname' =>['required', 'string', 'min:2'],
+            'firstname' => ['required', 'string', 'min:2'],
+            'lastname' => ['required', 'string', 'min:2'],
             'phone' => ['required', 'string', 'min:10'],
             'email' => ['required', 'email', 'min:4'],
             'message' => ['required', 'string', 'min:4']
